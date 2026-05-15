@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume - My Portfolio</title>
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
@@ -30,43 +28,48 @@
             </div>
         </div>
     </nav>
+
     <main class="container mt-5">
-        <h2 class="mb-4 border-bottom pb-2">Curriculum Vitae</h2>
+        <header class="border-bottom pb-2 mb-4">
+            <h2>My Resume</h2>
+        </header>
         
         <div class="row">
-            <div class="col-md-6 mb-4">
-                <h4>Eğitim (Education)</h4>
-                <ul class="list-group">
-                    <li class="list-group-item border-primary">
-                        <strong>Sakarya University</strong><br>
-                        Computer Engineering<br>
-                        <small class="text-muted">Currently Studying</small>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="col-md-6 mb-4">
-                <h4>Diller (Languages)</h4>
-                <ul class="list-group">
-                    <li class="list-group-item"><strong>Arabic:</strong> Native / Fluent</li>
-                    <li class="list-group-item"><strong>Turkish:</strong> Fluent</li>
-                    <li class="list-group-item"><strong>English:</strong> Intermediate</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-12">
-                <h4>Hobiler (Hobbies & Interests)</h4>
-                <div class="card mb-3 border-secondary">
-                    <div class="card-body">
-                        <h5 class="card-title">Gaming Enthusiast</h5>
-                        <p class="card-text">I have a huge passion for video games, especially story-driven action-adventure and survival horror games. My absolute favorites include <strong>Resident Evil</strong>, <strong>Red Dead Redemption</strong>, <strong>Tomb Raider</strong>, and <strong>Uncharted</strong>. Gaming is not just a hobby; it's a way to experience incredible storytelling and interactive art.</p>
-                    </div>
-                </div>
-            </div>
+            <section class="col-md-6 mb-4">
+                <header>
+                    <h4 class="text-primary mb-3">Education</h4>
+                </header>
+                <article class="p-3 bg-light border rounded mb-3">
+                    <h5 class="fw-bold">Sakarya University</h5>
+                    <p class="text-muted mb-1">B.S. Computer Engineering</p>
+                    <p class="small">First-Year Student</p>
+                </article>
+            </section>
+
+            <section class="col-md-6 mb-4">
+                <header>
+                    <h4 class="text-primary mb-3">Skills & Languages</h4>
+                </header>
+                <article class="p-3 bg-light border rounded mb-3">
+                    <h5 class="fw-bold">Programming Languages</h5>
+                    <ul class="mb-2">
+                        <li>C++</li>
+                        <li>C#</li>
+                        <li>Web Technologies (HTML, CSS, JS)</li>
+                    </ul>
+                </article>
+                <article class="p-3 bg-light border rounded mb-3">
+                    <h5 class="fw-bold">Spoken Languages</h5>
+                    <ul class="mb-0">
+                        <li>Arabic (Native)</li>
+                        <li>Turkish (Fluent)</li>
+                        <li>English (Intermediate)</li>
+                    </ul>
+                </article>
+            </section>
         </div>
     </main>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

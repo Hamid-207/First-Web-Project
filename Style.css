@@ -1,0 +1,32 @@
+/* Google'dan modern bir font içe aktarımı (UI/UX iyileştirmesi) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9fbfd;
+}
+
+/* Navigasyon çubuğu linkleri için geçiş (transition) animasyonları */
+.navbar-nav .nav-link {
+    transition: color 0.3s ease, transform 0.2s;
+}
+.navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+    transform: translateY(-2px);
+}
+
+/* İlgi alanları sayfasındaki oyun kartları için Hover (üzerine gelme) efektleri */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none !important;
+}
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15) !important;
+}
+
+/* Şehrim (Sakarya) sayfasındaki slider resimleri için kenar yuvarlama */
+.carousel-inner {
+    border-radius: 12px;
+    overflow: hidden;
+}
