@@ -40,7 +40,7 @@
             <div class="col-md-3 col-sm-6 mb-4">
                 <div class="card h-100 border-dark shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-danger fw-bold">Resident Evil</h5>
+                        <h5 class="card-title text-danger fw-bold">Resident Evil 4</h5>
                         <p class="card-text small">Masterpiece of survival horror and intense atmosphere.</p>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
             <div class="col-md-3 col-sm-6 mb-4">
                 <div class="card h-100 border-dark shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-warning fw-bold">Red Dead Redemption</h5>
+                        <h5 class="card-title text-warning fw-bold">Red Dead Redemption 2</h5>
                         <p class="card-text small">An unmatched, deep open-world storytelling experience.</p>
                     </div>
                 </div>
@@ -58,8 +58,8 @@
             <div class="col-md-3 col-sm-6 mb-4">
                 <div class="card h-100 border-dark shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-info fw-bold">Tomb Raider</h5>
-                        <p class="card-text small">Epic adventures and puzzle-solving exploration.</p>
+                        <h5 class="card-title text-info fw-bold">The Last of Us</h5>
+                        <p class="card-text small">A breathtaking story of survival and human connection.</p>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
             <div class="col-md-3 col-sm-6 mb-4">
                 <div class="card h-100 border-dark shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-success fw-bold">Uncharted</h5>
+                        <h5 class="card-title text-success fw-bold">Uncharted 4</h5>
                         <p class="card-text small">Cinematic action and unforgettable treasure hunts.</p>
                     </div>
                 </div>
@@ -79,7 +79,61 @@
                 🎮 View My Steam Profile
             </a>
         </div>
+
+        <div class="mt-5 border-top pt-4">
+            <h3 class="mb-4">Favori Oyunlarım (RAWG API)</h3>
+            <div class="row" id="api-results">
+                <div class="text-center w-100">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="mt-2 text-muted">Veriler çekiliyor...</p>
+                </div>
+            </div>
+        </div>
+
     </main>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const apiKey = 'eb617306ccbf4951b037d3798f97ec5d'; 
+        
+        // Oyunların sabit sırası
+        const myFavoriteGames = ['resident-evil-4-2023', 'red-dead-redemption-2', 'the-last-of-us', 'uncharted-4-a-thiefs-end'];
+        const apiResults = document.getElementById('api-results');
+        
+        // Promise.all kullanarak sırayı sabitliyoruz
+        const fetchPromises = myFavoriteGames.map(gameSlug => 
+            fetch(`https://api.rawg.io/api/games/${gameSlug}?key=${apiKey}`).then(response => response.json())
+        );
+
+        Promise.all(fetchPromises)
+            .then(gamesData => {
+                apiResults.innerHTML = ''; // Yükleniyor animasyonunu kaldır
+                
+                gamesData.forEach(data => {
+                    const imageUrl = data.background_image ? data.background_image : 'https://via.placeholder.com/210x150?text=No+Image';
+                    const rating = data.metacritic ? `<span class="badge bg-success ms-2">Metacritic: ${data.metacritic}</span>` : '';
+                    const releaseDate = data.released ? data.released : 'Bilinmiyor';
+
+                    const card = `
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <div class="card h-100 border-dark shadow-sm bg-dark text-white">
+                                <img src="${imageUrl}" class="card-img-top" alt="${data.name}" style="height: 160px; object-fit: cover;">
+                                <div class="card-body d-flex flex-column text-center">
+                                    <h6 class="card-title fw-bold text-warning">${data.name}</h6>
+                                    <p class="card-text small mb-2 text-light">Çıkış: ${releaseDate} ${rating}</p>
+                                    <a href="${data.website || '#'}" target="_blank" class="btn btn-sm btn-outline-light mt-auto">Resmi Site</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    apiResults.innerHTML += card;
+                });
+            })
+            .catch(error => {
+                apiResults.innerHTML = '<p class="text-danger w-100 text-center">API verileri yüklenemedi.</p>';
+                console.error('RAWG API Hatası:', error);
+            });
+    </script>
 </body>
 </html>
